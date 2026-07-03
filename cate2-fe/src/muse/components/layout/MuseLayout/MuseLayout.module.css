@@ -1,0 +1,50 @@
+/* src/muse/components/layout/MuseLayout/MuseLayout.module.css */
+
+.root {
+  display:          flex;
+  min-height:       100vh;
+  background-color: var(--muse-content-bg);
+  position:         relative;
+}
+
+.main {
+  flex:           1;
+  margin-left:    clamp(240px, 15vw, 340px);
+  display:        flex;
+  flex-direction: column;
+  min-height:     100vh;
+  min-width:      0;
+  /* REMOVED overflow-x: hidden from here — it breaks position: sticky on header */
+}
+
+.content {
+  flex:       1;
+  padding:    clamp(28px, 2.5vw, 60px);
+  overflow-x: hidden;  /* overflow containment moved here — below the sticky header */
+}
+
+.overlay {
+  position:   fixed;
+  inset:      0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index:    99;
+  cursor:     pointer;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .main {
+    margin-left: 0;
+  }
+
+  .content {
+    padding: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .content {
+    padding: 16px;
+  }
+}

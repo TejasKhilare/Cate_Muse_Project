@@ -1,0 +1,268 @@
+/* src/muse/components/new-proposal/EventBriefForm/EventBriefForm.module.css */
+
+/* ── Card ────────────────────────────────────────────────────── */
+.card {
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  padding:       clamp(24px, 2.2vw, 40px);
+  box-shadow:    var(--muse-shadow-card);
+  width:         100%;
+}
+
+/* ── Section label ───────────────────────────────────────────── */
+.sectionLabel {
+  display:        block;
+  font-size:      clamp(10px, 0.75vw, 12px);
+  font-weight:    600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--muse-text-muted);
+  margin-bottom:  clamp(18px, 1.6vw, 28px);
+}
+
+/* ── 2-column form grid ──────────────────────────────────────── */
+.formGrid {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   clamp(16px, 1.4vw, 24px);
+}
+
+.formGroup {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(6px, 0.5vw, 9px);
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* ── Label ───────────────────────────────────────────────────── */
+.label {
+  font-size:   clamp(12px, 0.88vw, 14px);
+  font-weight: 400;
+  color:       var(--muse-text-secondary);
+  line-height: 1;
+}
+
+/* ── Shared base for all inputs ──────────────────────────────── */
+.input {
+  width:         100%;
+  height:        clamp(40px, 3.1vw, 52px);
+  padding:       0 clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:hover {
+  border-color: var(--muse-gold);
+}
+
+.input:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* ── Number input — keep spinner arrows visible ──────────────── */
+/*
+ * We do NOT apply -moz-appearance: textfield or
+ * -webkit-appearance: none here.
+ * The browser's native up/down spinner is exactly what
+ * the Figma shows — we just style it to match the gold theme.
+ *
+ * Chrome/Safari/Edge: style the spinner via ::-webkit-inner-spin-button
+ * Firefox: shows its own spinner natively with no CSS hook — acceptable.
+ */
+.inputNumber {
+  width:         100%;
+  height:        clamp(40px, 3.1vw, 52px);
+  /*
+   * Right padding reduced — spinner arrows occupy the right side.
+   * Left padding stays normal. Height must be explicit so the
+   * spinner fills the full input height (no gap at top/bottom).
+   */
+  padding:       0 clamp(6px, 0.5vw, 10px) 0 clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+  /* Keep default appearance so spinners render */
+  appearance:         auto;
+  -webkit-appearance: auto;
+}
+
+.inputNumber::placeholder {
+  color: #9ca3af;
+}
+
+.inputNumber:hover {
+  border-color: var(--muse-gold);
+}
+
+.inputNumber:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* Style the spinner arrows to match the gold theme */
+.inputNumber::-webkit-inner-spin-button {
+  opacity:            1;           /* always visible, not just on hover */
+  -webkit-appearance: inner-spin-button;
+  height:             100%;        /* fill full input height */
+  cursor:             pointer;
+}
+
+.inputNumber::-webkit-outer-spin-button {
+  opacity:            1;
+  -webkit-appearance: inner-spin-button;
+  height:             100%;
+}
+
+/* ── Textarea ────────────────────────────────────────────────── */
+.textarea {
+  width:         100%;
+  min-height:    clamp(110px, 9vw, 160px);
+  padding:       clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  line-height:   1.6;
+  resize:        vertical;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.textarea::placeholder {
+  color: #9ca3af;
+}
+
+.textarea:hover {
+  border-color: var(--muse-gold);
+}
+
+.textarea:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* ── Native select — single border, full control ─────────────── */
+.selectWrapper {
+  position: relative;
+  width:    100%;
+}
+
+.nativeSelect {
+  appearance:         none;
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  width:         100%;
+  height:        clamp(40px, 3.1vw, 52px);
+  padding:       0 clamp(36px, 2.5vw, 48px) 0 clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  cursor:        pointer;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.nativeSelect:hover {
+  border-color: var(--muse-gold);
+}
+
+.nativeSelect:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+.selectChevron {
+  position:       absolute;
+  right:          clamp(10px, 0.9vw, 16px);
+  top:            50%;
+  transform:      translateY(-50%);
+  color:          #9ca3af;
+  font-size:      clamp(10px, 0.75vw, 13px);
+  pointer-events: none;
+  line-height:    1;
+  user-select:    none;
+}
+
+/* ── Ant Design DatePicker — styled to match native inputs ────── */
+.datePickerWrapper {
+  width: 100%;
+}
+
+.datePickerWrapper :global(.ant-picker) {
+  width:         100% !important;
+  height:        clamp(40px, 3.1vw, 52px) !important;
+  background:    #f9f8f5 !important;
+  border-color:  #e8e6e0 !important;
+  border-radius: 8px !important;
+  padding:       0 clamp(10px, 0.9vw, 16px) !important;
+  box-shadow:    none !important;
+}
+
+.datePickerWrapper :global(.ant-picker:hover) {
+  border-color: var(--muse-gold) !important;
+}
+
+.datePickerWrapper :global(.ant-picker-focused) {
+  border-color: var(--muse-gold) !important;
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15) !important;
+}
+
+.datePickerWrapper :global(.ant-picker-input > input) {
+  font-size:   clamp(13px, 0.95vw, 15px) !important;
+  color:       var(--muse-text-primary) !important;
+  font-family: inherit !important;
+  background:  transparent !important;
+}
+
+.datePickerWrapper :global(.ant-picker-input > input::placeholder) {
+  color: #9ca3af !important;
+}
+
+.datePickerWrapper :global(.ant-picker-suffix),
+.datePickerWrapper :global(.ant-picker-clear) {
+  color: #9ca3af !important;
+}
+
+/* ── Mobile (<768px): single column ──────────────────────────── */
+@media (max-width: 767px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 16px prevents iOS Safari auto-zoom on input focus */
+  .input,
+  .inputNumber,
+  .textarea,
+  .nativeSelect {
+    font-size: 16px;
+  }
+
+  .datePickerWrapper :global(.ant-picker-input > input) {
+    font-size: 16px !important;
+  }
+}

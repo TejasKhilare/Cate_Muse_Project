@@ -1,0 +1,251 @@
+/* src/muse/pages/MuseBoardPage/MuseBoardPage.module.css */
+
+.page {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(20px, 1.8vw, 32px);
+  width:          100%;
+}
+
+/* ── Page header ─────────────────────────────────────────────── */
+.pageHeader {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(6px, 0.5vw, 10px);
+}
+
+.titleRow {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(10px, 0.85vw, 16px);
+}
+
+.sparkleIcon {
+  color:       var(--muse-gold);
+  flex-shrink: 0;
+}
+
+.pageTitle {
+  font-size:   clamp(22px, 1.9vw, 32px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0;
+  line-height: 1.2;
+}
+
+/* "MUSE" in italic gold — matches Figma exactly */
+.museWord {
+  font-style:  italic;
+  color:       var(--muse-gold);
+  font-family: var(--font-family-title);
+  font-weight: 400;
+}
+
+.pageSubtitle {
+  font-size:   clamp(13px, 0.9vw, 15px);
+  color:       var(--muse-text-secondary);
+  margin:      0;
+  line-height: 1.5;
+}
+
+/* ── 2-column layout ─────────────────────────────────────────── */
+/*
+ * Desktop: form (1fr) | panel (340px)
+ * Tablet/Mobile: single column, panel moves below form
+ */
+.layout {
+  display:               grid;
+  grid-template-columns: 1fr clamp(280px, 22vw, 380px);
+  gap:                   clamp(20px, 1.8vw, 32px);
+  align-items:           start;
+}
+
+.formCol {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 18px);
+  min-width:      0;
+}
+
+.sideCol {
+  min-width: 0;
+}
+
+/* ── Form section cards ──────────────────────────────────────── */
+.section {
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  padding:       clamp(16px, 1.4vw, 24px);
+  box-shadow:    var(--muse-shadow-card);
+  display:       flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 16px);
+}
+
+/* Section label — uppercase small caps */
+.sectionLabel {
+  display:        block;
+  font-size:      clamp(10px, 0.75vw, 12px);
+  font-weight:    600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--muse-text-muted);
+  line-height:    1;
+}
+
+/* ── Text inputs ─────────────────────────────────────────────── */
+.input {
+  width:         100%;
+  height:        clamp(40px, 3.1vw, 52px);
+  padding:       0 clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder { color: #9ca3af; }
+.input:hover        { border-color: var(--muse-gold); }
+.input:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* ── Textarea ────────────────────────────────────────────────── */
+.textarea {
+  width:         100%;
+  min-height:    clamp(90px, 7vw, 130px);
+  padding:       clamp(10px, 0.9vw, 16px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  line-height:   1.6;
+  resize:        vertical;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.textarea::placeholder { color: #9ca3af; }
+.textarea:hover        { border-color: var(--muse-gold); }
+.textarea:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* ── Guest Count row — label + input inline ──────────────────── */
+.guestCountRow {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(12px, 1vw, 20px);
+}
+
+.guestCountInput {
+  width:         clamp(90px, 8vw, 130px);
+  height:        clamp(38px, 2.9vw, 48px);
+  padding:       0 clamp(8px, 0.7vw, 12px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+  /* Keep spinner arrows — matches Figma */
+  appearance:         auto;
+  -webkit-appearance: auto;
+}
+
+.guestCountInput::-webkit-inner-spin-button,
+.guestCountInput::-webkit-outer-spin-button {
+  opacity: 1;
+  height:  100%;
+}
+
+.guestCountInput:hover { border-color: var(--muse-gold); }
+.guestCountInput:focus {
+  border-color: var(--muse-gold);
+  box-shadow:   0 0 0 2px rgba(201, 168, 76, 0.15);
+}
+
+/* ── Generate button — full width gold ───────────────────────── */
+.generateBtn {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             clamp(8px, 0.65vw, 12px);
+  width:           100%;
+  padding:         clamp(14px, 1.2vw, 20px) 24px;
+  background:      var(--muse-gold);
+  color:           #1a1f2e;
+  font-size:       clamp(14px, 1vw, 17px);
+  font-weight:     600;
+  border:          none;
+  border-radius:   10px;
+  cursor:          pointer;
+  font-family:     inherit;
+  transition:      background 0.15s, transform 0.1s, opacity 0.15s;
+  line-height:     1;
+}
+
+.generateBtn:hover:not(:disabled) {
+  background: var(--muse-gold-dark);
+  transform:  translateY(-1px);
+}
+
+.generateBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generateBtn:disabled {
+  opacity: 0.65;
+  cursor:  not-allowed;
+}
+
+/* ── Tablet (768–1023px) ──────────────────────────────────────── */
+@media (max-width: 1023px) {
+  /* Stack form + panel vertically. Panel appears BELOW form. */
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pageTitle {
+    font-size: 22px;
+  }
+}
+
+/* ── Mobile (<768px) ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .page {
+    gap: 16px;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  /* 16px prevents iOS auto-zoom */
+  .input,
+  .textarea,
+  .guestCountInput {
+    font-size: 16px;
+  }
+
+  .guestCountRow {
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            8px;
+  }
+
+  .guestCountInput {
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+/* src/muse/components/admin/HorizontalBarCard/HorizontalBarCard.module.css */
+
+.card {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  box-shadow:     var(--muse-shadow-card);
+  padding:        clamp(16px, 1.4vw, 24px);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(16px, 1.4vw, 22px);
+  /* Same reason as DailyPromptsChart — used by both "Prompts by Event
+     Type" and "Processing Time Distribution", both grid items. */
+  min-width:      0;
+}
+
+.header     { display: flex; align-items: center; gap: 8px; }
+.headerIcon { display: flex; align-items: center; }
+.title      { font-size: clamp(14px, 1vw, 16px); font-weight: 600; color: var(--muse-text-primary); }
+
+.list { display: flex; flex-direction: column; gap: clamp(10px, 0.9vw, 14px); }
+.row  { display: flex; align-items: center; gap: clamp(10px, 0.9vw, 16px); min-width: 0; }
+
+.label {
+  font-size:     clamp(12px, 0.88vw, 14px);
+  color:         var(--muse-text-secondary);
+  width:         clamp(90px, 9vw, 140px);
+  flex-shrink:   0;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.track { flex: 1; min-width: 0; height: clamp(7px, 0.6vw, 10px); background: #f0eee8; border-radius: 10px; overflow: hidden; }
+.bar   { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+.value { font-size: clamp(12px, 0.88vw, 14px); font-weight: 600; color: var(--muse-text-primary); width: 32px; text-align: right; flex-shrink: 0; }
+
+@media (max-width: 767px) {
+  .label { width: 76px; font-size: 11px; }
+}

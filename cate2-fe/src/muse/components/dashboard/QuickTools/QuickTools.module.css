@@ -1,0 +1,123 @@
+/* src/muse/components/dashboard/QuickTools/QuickTools.module.css */
+
+.grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   16px;
+}
+
+.card {
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  overflow:      hidden;
+  cursor:        pointer;
+  transition:    box-shadow 0.15s, transform 0.15s;
+  box-shadow:    var(--muse-shadow-card);
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform:  translateY(-1px);
+}
+
+.card:focus-visible {
+  outline:        2px solid var(--muse-gold);
+  outline-offset: 2px;
+}
+
+.imageArea {
+  position: relative;
+  height:   160px;
+}
+
+.overlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.15) 60%,
+    transparent         100%
+  );
+}
+
+.imageLabel {
+  position:    absolute;
+  bottom:      14px;
+  left:        14px;
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+  color:       #ffffff;
+  font-size:   15px;
+  font-weight: 600;
+}
+
+.imageLabelIcon {
+  display:     flex;
+  align-items: center;
+}
+
+.description {
+  padding:     14px 16px;
+  font-size:   13px;
+  color:       var(--muse-text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Large screens (≥1920px) ─────────────────────────────────── */
+@media (min-width: 1920px) {
+  .grid {
+    gap: 24px;
+  }
+
+  .imageArea {
+    height: 250px;
+  }
+
+  .imageLabel {
+    font-size: 20px;
+    bottom:    20px;
+    left:      20px;
+    gap:       10px;
+  }
+
+  .description {
+    padding:   20px 24px;
+    font-size: 17px;
+  }
+}
+
+/* ── Tablet and Mobile: horizontal scroll ─────────────────────── */
+@media (max-width: 1023px) {
+  .grid {
+    display:            flex;
+    overflow-x:         auto;
+    gap:                12px;
+    padding-bottom:     8px;
+    scrollbar-width:    none;
+    -ms-overflow-style: none;
+  }
+
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    min-width:   260px;
+    width:       260px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    min-width: 220px;
+    width:     220px;
+  }
+
+  .imageArea {
+    height: 130px;
+  }
+}

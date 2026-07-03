@@ -1,0 +1,57 @@
+.card {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  box-shadow:     var(--muse-shadow-card);
+  overflow:       hidden;
+  display:        flex;
+  flex-direction: column;
+}
+
+.header {
+  display:        flex;
+  align-items:    center;
+  gap:            8px;
+  padding:        clamp(14px, 1.2vw, 20px) clamp(16px, 1.4vw, 24px);
+  border-bottom:  1px solid var(--muse-card-border);
+  flex-shrink:    0;
+}
+
+.title { font-size: clamp(14px, 1vw, 16px); font-weight: 600; color: var(--muse-text-primary); }
+
+.scrollWrapper {
+  overflow-x:      auto;
+  overflow-y:      auto;
+  max-height:      clamp(280px, 30vh, 360px);
+  scrollbar-width: auto;
+  scrollbar-color: #c9a84c #f5f4f0;
+}
+.scrollWrapper::-webkit-scrollbar       { width: 8px; height: 8px; }
+.scrollWrapper::-webkit-scrollbar-track { background: #f5f4f0; }
+.scrollWrapper::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 4px; }
+
+.list { display: flex; flex-direction: column; min-width: 360px; }
+
+.row {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             12px;
+  padding:         clamp(12px, 1vw, 16px) clamp(16px, 1.4vw, 24px);
+}
+.row:not(:last-child) { border-bottom: 1px solid var(--muse-card-border); }
+
+.rowContent { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.name       { font-size: clamp(13px, 0.92vw, 14px); font-weight: 600; color: var(--muse-text-primary); white-space: nowrap; }
+.meta       { font-size: clamp(11px, 0.78vw, 12px); color: var(--muse-text-muted); white-space: nowrap; }
+
+.countBadge {
+  font-size:     clamp(11px, 0.8vw, 12px);
+  font-weight:   600;
+  color:         var(--muse-text-secondary);
+  background:    #f1efe8;
+  padding:       4px 10px;
+  border-radius: 6px;
+  flex-shrink:   0;
+  white-space:   nowrap;
+}

@@ -1,0 +1,47 @@
+.tagRow {
+  display:   flex;
+  flex-wrap: wrap;
+  gap:       clamp(8px, 0.7vw, 12px);
+}
+
+.tag {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           5px;
+  padding:       clamp(7px, 0.6vw, 10px) clamp(14px, 1.2vw, 20px);
+  border-radius: 999px;
+  border:        1px solid #d1cfc8;
+  background:    transparent;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  font-weight:   400;
+  color:         var(--muse-text-primary);
+  cursor:        pointer;
+  font-family:   inherit;
+  transition:    border-color 0.15s, color 0.15s, background 0.15s;
+  line-height:   1;
+  white-space:   nowrap;
+}
+
+.tag:hover {
+  border-color: var(--muse-gold);
+  color:        var(--muse-gold);
+}
+
+/* Selected state — gold checkmark + gold text + gold border */
+.tagSelected {
+  border-color: var(--muse-gold);
+  color:        var(--muse-gold);
+  font-weight:  500;
+}
+
+.checkIcon {
+  color:       var(--muse-gold);
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .tag {
+    font-size: 14px;
+    padding:   8px 14px;
+  }
+}

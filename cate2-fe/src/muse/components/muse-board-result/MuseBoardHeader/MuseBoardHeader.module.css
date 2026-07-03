@@ -1,0 +1,96 @@
+/* src/muse/components/muse-board-result/MuseBoardHeader/MuseBoardHeader.module.css */
+
+.header {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(8px, 0.7vw, 12px);
+}
+
+.top {
+  display: flex;
+}
+
+.backLink {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             5px;
+  font-size:       clamp(12px, 0.85vw, 13px);
+  color:           var(--muse-text-secondary);
+  text-decoration: none;
+  transition:      color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--muse-text-primary);
+}
+
+.row {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+  gap:             16px;
+  flex-wrap:       wrap;
+}
+
+.titleBlock {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(4px, 0.35vw, 7px);
+  min-width:      0;
+}
+
+.title {
+  font-size:   clamp(18px, 1.5vw, 26px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size:   clamp(11px, 0.8vw, 13px);
+  color:       var(--muse-text-secondary);
+  margin:      0;
+  line-height: 1.4;
+}
+
+.actions {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(6px, 0.5vw, 10px);
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           6px;
+  padding:       clamp(7px, 0.6vw, 10px) clamp(12px, 1vw, 18px);
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: 8px;
+  font-size:     clamp(12px, 0.85vw, 14px);
+  font-weight:   500;
+  color:         var(--muse-text-primary);
+  cursor:        pointer;
+  font-family:   inherit;
+  white-space:   nowrap;
+  transition:    border-color 0.15s, background 0.15s;
+}
+
+.actionBtn:hover {
+  border-color: var(--muse-gold);
+  background:   #faf9f6;
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+    align-items:    stretch;
+  }
+
+  .actions {
+    justify-content: flex-start;
+    flex-wrap:       wrap;
+  }
+}

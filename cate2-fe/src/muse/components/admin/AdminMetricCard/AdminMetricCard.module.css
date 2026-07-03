@@ -1,0 +1,58 @@
+.card {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  padding:        clamp(16px, 1.4vw, 22px) clamp(18px, 1.5vw, 24px);
+  box-shadow:     var(--muse-shadow-card);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(6px, 0.5vw, 10px);
+  min-width:      0;
+}
+
+.labelTop {
+  font-size:      clamp(10px, 0.72vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--muse-text-secondary);
+}
+
+.indicatorRow {
+  display:     flex;
+  align-items: center;
+}
+
+.iconWrap {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.dot {
+  width:         9px;
+  height:        9px;
+  border-radius: 50%;
+}
+
+.value {
+  font-size:   clamp(22px, 1.9vw, 32px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  font-family: var(--font-family-title);
+  line-height: 1;
+}
+
+.subtext {
+  font-size: clamp(11px, 0.8vw, 13px);
+  color:     var(--muse-text-muted);
+}
+
+.labelBottom {
+  font-size:      clamp(10px, 0.72vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--muse-text-secondary);
+  margin-top:     2px;
+}

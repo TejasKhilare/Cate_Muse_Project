@@ -1,0 +1,103 @@
+.wrapper {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 18px);
+  /* Sticky on desktop so tips stay visible while scrolling form */
+  position:       sticky;
+  top:            calc(var(--muse-header-height) + 24px);
+}
+
+.card {
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  padding:       clamp(16px, 1.4vw, 24px);
+  box-shadow:    var(--muse-shadow-card);
+}
+
+/* Prompt Tips heading */
+.cardTitle {
+  display:       flex;
+  align-items:   center;
+  gap:           7px;
+  font-size:     clamp(14px, 1vw, 16px);
+  font-weight:   600;
+  color:         var(--muse-gold);
+  margin-bottom: clamp(8px, 0.65vw, 12px);
+}
+
+.sparkle {
+  color:       var(--muse-gold);
+  flex-shrink: 0;
+}
+
+.cardSubtitle {
+  font-size:     clamp(12px, 0.88vw, 14px);
+  color:         var(--muse-text-secondary);
+  margin:        0 0 clamp(10px, 0.85vw, 16px);
+  line-height:   1.5;
+}
+
+/* Tips list */
+.tipList {
+  list-style: none;
+  margin:     0;
+  padding:    0;
+  display:    flex;
+  flex-direction: column;
+  gap:        clamp(7px, 0.6vw, 10px);
+}
+
+.tipItem {
+  display:     flex;
+  align-items: flex-start;
+  gap:         8px;
+  font-size:   clamp(12px, 0.85vw, 13px);
+  color:       var(--muse-text-secondary);
+  line-height: 1.4;
+}
+
+.tipCheck {
+  color:       var(--muse-gold);
+  flex-shrink: 0;
+  margin-top:  1px;
+}
+
+/* Output Includes heading */
+.outputTitle {
+  font-size:     clamp(14px, 1vw, 16px);
+  font-weight:   600;
+  color:         var(--muse-text-primary);
+  margin-bottom: clamp(10px, 0.85vw, 16px);
+}
+
+.outputList {
+  list-style:     none;
+  margin:         0;
+  padding:        0;
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(7px, 0.6vw, 10px);
+}
+
+.outputItem {
+  display:     flex;
+  align-items: flex-start;
+  gap:         8px;
+  font-size:   clamp(12px, 0.85vw, 13px);
+  color:       var(--muse-text-secondary);
+  line-height: 1.4;
+}
+
+.outputArrow {
+  color:       var(--muse-text-muted);
+  flex-shrink: 0;
+  margin-top:  1px;
+}
+
+/* On tablet/mobile sticky is disabled — panel flows below form */
+@media (max-width: 1023px) {
+  .wrapper {
+    position: static;
+  }
+}

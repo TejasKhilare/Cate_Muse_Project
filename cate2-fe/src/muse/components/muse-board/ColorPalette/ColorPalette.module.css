@@ -1,0 +1,158 @@
+/* ── Single flat row — all swatches + "+" on same line ───────── */
+.row {
+  display:     flex;
+  align-items: flex-end;   /* align to bottom so hex labels line up */
+  gap:         clamp(10px, 0.9vw, 16px);
+  flex-wrap:   wrap;
+}
+
+/* ── Each swatch + hex label stacked ─────────────────────────── */
+.swatchItem {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            6px;
+}
+
+/* ── Add item — same column structure as swatchItem ─────────── */
+/*
+ * No hex label — padding-bottom matches hex label height so
+ * the "+" button bottom-aligns with the colored swatches.
+ */
+.addItem {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  padding-bottom: clamp(15px, 1.1vw, 19px);
+}
+
+/* ── Swatch wrapper — relative for the × button ─────────────── */
+.swatchWrapper {
+  position: relative;
+  width:    clamp(44px, 3.5vw, 56px);
+  height:   clamp(44px, 3.5vw, 56px);
+}
+
+/* ── Colored swatch (both button and div variants) ───────────── */
+.swatch {
+  width:         100%;
+  height:        100%;
+  border-radius: 8px;
+  border:        2px solid rgba(0, 0, 0, 0.10);
+  display:       block;
+  padding:       0;
+  transition:    transform 0.15s, border-color 0.15s;
+}
+
+/* Button variant (active swatch) — pointer + hover scale */
+button.swatch {
+  cursor: pointer;
+}
+
+button.swatch:hover {
+  transform:    scale(1.05);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+button.swatch:focus-visible {
+  outline:        2px solid var(--muse-gold);
+  outline-offset: 2px;
+}
+
+/* Div variant (confirmed swatch) — no pointer, no hover scale */
+div.swatch {
+  cursor: default;
+}
+
+/* ── Remove × button ─────────────────────────────────────────── */
+/*
+ * Absolutely positioned top-right of the swatch.
+ * Hidden by default, revealed on .swatchWrapper hover.
+ * On mobile (touch) always visible since no hover exists.
+ */
+.removeBtn {
+  position:        absolute;
+  top:             -7px;
+  right:           -7px;
+  width:           18px;
+  height:          18px;
+  border-radius:   50%;
+  background:      #e53e3e;
+  color:           #ffffff;
+  border:          2px solid #ffffff;
+  cursor:          pointer;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       13px;
+  font-weight:     700;
+  line-height:     1;
+  padding:         0;
+  opacity:         0;
+  pointer-events:  none;
+  transition:      opacity 0.15s, transform 0.15s;
+  z-index:         10;
+}
+
+.swatchWrapper:hover .removeBtn {
+  opacity:        1;
+  pointer-events: auto;
+}
+
+.removeBtn:hover {
+  transform:  scale(1.15);
+  background: #c53030;
+}
+
+/* ── Hex label ───────────────────────────────────────────────── */
+.hexLabel {
+  font-size:      clamp(9px, 0.7vw, 11px);
+  color:          var(--muse-text-muted);
+  letter-spacing: 0.04em;
+  white-space:    nowrap;
+  font-family:    monospace;
+  text-transform: uppercase;
+  line-height:    1;
+}
+
+/* ── Add "+" button ──────────────────────────────────────────── */
+.addBtn {
+  width:           clamp(44px, 3.5vw, 56px);
+  height:          clamp(44px, 3.5vw, 56px);
+  border-radius:   8px;
+  border:          2px dashed #d1cfc8;
+  background:      transparent;
+  color:           var(--muse-text-muted);
+  font-size:       clamp(20px, 1.6vw, 26px);
+  cursor:          pointer;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      border-color 0.15s, color 0.15s;
+  line-height:     1;
+  padding:         0;
+}
+
+.addBtn:hover {
+  border-color: var(--muse-gold);
+  color:        var(--muse-gold);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .swatchWrapper {
+    width:  44px;
+    height: 44px;
+  }
+
+  .addBtn {
+    width:  44px;
+    height: 44px;
+  }
+
+  /* Touch: always show remove button */
+  .removeBtn {
+    opacity:        1;
+    pointer-events: auto;
+  }
+}

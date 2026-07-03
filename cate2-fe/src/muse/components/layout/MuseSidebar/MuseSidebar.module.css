@@ -1,0 +1,204 @@
+/* src/muse/components/layout/MuseSidebar/MuseSidebar.module.css */
+
+/* ── Shell ───────────────────────────────────────────────────── */
+.sidebar {
+  display:        flex;
+  flex-direction: column;
+  /*
+   * clamp(240px, 15vw, 340px)
+   * At 1024px viewport → 15vw = 153px → clamp floors at 240px
+   * At 1440px viewport → 15vw = 216px → clamp floors at 240px
+   * At 1600px viewport → 15vw = 240px → exact match
+   * At 1920px viewport → 15vw = 288px → scales up
+   * At 2560px viewport → 15vw = 384px → clamp caps at 340px
+   * Sidebar grows naturally with viewport width.
+   */
+  width:          clamp(240px, 15vw, 340px);
+  min-height:     100vh;
+  background:     var(--muse-sidebar-bg);
+  flex-shrink:    0;
+  position:       fixed;
+  top:            0;
+  left:           0;
+  bottom:         0;
+  z-index:        100;
+  overflow-y:     auto;
+  overflow-x:     hidden;
+  transition:     transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop: always visible */
+@media (min-width: 1024px) {
+  .sidebar {
+    transform: none !important;
+  }
+}
+
+/* Tablet/Mobile: drawer */
+@media (max-width: 1023px) {
+  .sidebar {
+    width:     240px; /* fixed on drawer — clamp based on viewport makes no sense when it overlays */
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+}
+
+/* ── Logo area ───────────────────────────────────────────────── */
+.logoArea {
+  padding:       clamp(18px, 1.6vw, 32px) clamp(16px, 1.4vw, 28px);
+  border-bottom: 1px solid var(--muse-sidebar-border);
+  flex-shrink:   0;
+}
+
+.logoText {
+  font-size:      clamp(15px, 1.1vw, 22px);
+  font-weight:    700;
+  letter-spacing: 0.03em;
+  line-height:    1;
+  margin-bottom:  clamp(4px, 0.4vw, 8px);
+}
+
+.logoCate { color: #ffffff; }
+
+.logoPlus {
+  color:       #ffffff;
+  font-weight: 300;
+  margin:      0 2px;
+}
+
+.logoMuse { color: var(--muse-gold); }
+
+.logoSubtext {
+  font-size:      clamp(9px, 0.6vw, 12px);
+  font-weight:    500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          var(--muse-sidebar-item-color);
+  margin-top:     clamp(3px, 0.3vw, 6px);
+}
+
+/* ── Navigation ──────────────────────────────────────────────── */
+.nav {
+  flex:           1;
+  padding:        clamp(10px, 0.8vw, 18px) clamp(8px, 0.7vw, 16px);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(2px, 0.2vw, 5px);
+  overflow-y:     auto;
+}
+
+.navItem {
+  display:         flex;
+  align-items:     center;
+  gap:             clamp(8px, 0.7vw, 14px);
+  padding:         clamp(8px, 0.65vw, 14px) clamp(10px, 0.85vw, 18px);
+  border-radius:   clamp(6px, 0.5vw, 10px);
+  color:           var(--muse-sidebar-item-color);
+  text-decoration: none;
+  font-size:       clamp(13px, 0.9vw, 18px);
+  font-weight:     400;
+  line-height:     1;
+  white-space:     nowrap;
+  transition:      background-color 0.15s ease, color 0.15s ease;
+  cursor:          pointer;
+}
+
+.navItem:hover {
+  background-color: var(--muse-sidebar-active-bg);
+  color:            var(--muse-sidebar-item-hover);
+  text-decoration:  none;
+}
+
+.navItemActive {
+  background-color: var(--muse-sidebar-active-bg);
+  color:            var(--muse-sidebar-item-active);
+  font-weight:      500;
+}
+
+.navIcon {
+  width:           clamp(16px, 1.1vw, 24px);
+  height:          clamp(16px, 1.1vw, 24px);
+  flex-shrink:     0;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  color:           inherit;
+}
+
+.navLabel {
+  flex:        1;
+  line-height: 1;
+}
+
+/* ── Divider ─────────────────────────────────────────────────── */
+.divider {
+  height:      1px;
+  background:  var(--muse-sidebar-border);
+  margin:      clamp(6px, 0.5vw, 14px) clamp(8px, 0.7vw, 16px);
+  flex-shrink: 0;
+}
+
+/* ── User area ───────────────────────────────────────────────── */
+.bottomArea {
+  padding:     clamp(8px, 0.7vw, 16px);
+  border-top:  1px solid var(--muse-sidebar-border);
+  flex-shrink: 0;
+}
+
+.userCard {
+  display:       flex;
+  align-items:   center;
+  gap:           clamp(8px, 0.7vw, 14px);
+  padding:       clamp(8px, 0.65vw, 14px) clamp(10px, 0.85vw, 16px);
+  border-radius: clamp(6px, 0.5vw, 10px);
+  cursor:        pointer;
+  transition:    background-color 0.15s ease;
+}
+
+.userCard:hover {
+  background-color: var(--muse-sidebar-active-bg);
+}
+
+.userAvatar {
+  width:           clamp(30px, 2.1vw, 46px);
+  height:          clamp(30px, 2.1vw, 46px);
+  border-radius:   50%;
+  background:      var(--muse-gold);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       clamp(10px, 0.75vw, 16px);
+  font-weight:     700;
+  color:           #1a1f2e;
+  flex-shrink:     0;
+  letter-spacing:  0.02em;
+}
+
+.userInfo {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(2px, 0.25vw, 5px);
+  min-width:      0;
+}
+
+.userName {
+  font-size:     clamp(12px, 0.85vw, 17px);
+  font-weight:   500;
+  color:         #ffffff;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  line-height:   1;
+}
+
+.userRole {
+  font-size:     clamp(10px, 0.65vw, 14px);
+  color:         var(--muse-sidebar-item-color);
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  line-height:   1;
+}

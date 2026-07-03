@@ -1,0 +1,147 @@
+/* src/muse/components/shared/EventBriefSelectorModal/EventBriefSelectorModal.module.css */
+
+/* ── Overlay ─────────────────────────────────────────────────── */
+.overlay {
+  position:        fixed;
+  inset:           0;
+  background:      rgba(0, 0, 0, 0.55);
+  z-index:         200;   /* above sidebar (100) and drawer overlay (99) */
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         clamp(16px, 3vw, 40px);
+}
+
+/* ── Modal card ──────────────────────────────────────────────── */
+.modal {
+  background:     var(--muse-card-bg);
+  border-radius:  var(--muse-card-radius);
+  width:          100%;
+  max-width:      clamp(420px, 42vw, 620px);
+  max-height:     min(80vh, 640px);
+  display:        flex;
+  flex-direction: column;
+  box-shadow:     var(--muse-shadow-modal);
+  overflow:       hidden;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.header {
+  padding:        clamp(20px, 1.8vw, 28px) clamp(20px, 1.8vw, 28px) clamp(14px, 1.2vw, 18px);
+  border-bottom:  1px solid var(--muse-card-border);
+  flex-shrink:    0;
+}
+
+.title {
+  font-size:   clamp(18px, 1.4vw, 22px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0 0 6px;
+}
+
+.subtitle {
+  font-size: clamp(12px, 0.88vw, 14px);
+  color:     var(--muse-text-secondary);
+  margin:    0;
+}
+
+/* ── Scrollable list ─────────────────────────────────────────── */
+.list {
+  flex:             1;
+  overflow-y:       auto;
+  padding:          clamp(14px, 1.2vw, 20px);
+  display:          flex;
+  flex-direction:   column;
+  gap:              10px;
+  scrollbar-width:  thin;
+  scrollbar-color:  #c9a84c #f5f4f0;
+}
+
+.list::-webkit-scrollbar       { width: 8px; }
+.list::-webkit-scrollbar-track { background: #f5f4f0; border-radius: 4px; }
+.list::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 4px; }
+
+.loadingState,
+.emptyState {
+  padding:    40px 0;
+  text-align: center;
+  font-size:  14px;
+  color:      var(--muse-text-muted);
+}
+
+/* ── Event item card ─────────────────────────────────────────── */
+.item {
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+  width:          100%;
+  text-align:     left;
+  padding:        clamp(12px, 1vw, 16px) clamp(14px, 1.2vw, 18px);
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  8px;
+  cursor:         pointer;
+  font-family:    inherit;
+  transition:     border-color 0.15s, background 0.15s;
+}
+
+.item:hover {
+  border-color: var(--muse-gold);
+  background:   #faf9f6;
+}
+
+.itemTop {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             10px;
+}
+
+.itemName {
+  font-size:   clamp(14px, 1vw, 16px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+}
+
+.itemMetaLine {
+  font-size:   clamp(12px, 0.85vw, 13px);
+  color:       var(--muse-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.footer {
+  padding:       clamp(14px, 1.2vw, 18px) clamp(20px, 1.8vw, 28px);
+  border-top:    1px solid var(--muse-card-border);
+  flex-shrink:   0;
+}
+
+.cancelBtn {
+  background:  transparent;
+  border:      none;
+  color:       var(--muse-text-secondary);
+  font-size:   clamp(13px, 0.9vw, 14px);
+  font-weight: 500;
+  cursor:      pointer;
+  padding:     6px 4px;
+  font-family: inherit;
+  transition:  color 0.15s;
+}
+
+.cancelBtn:hover {
+  color: var(--muse-text-primary);
+}
+
+/* ── Mobile: bottom sheet style ──────────────────────────────── */
+@media (max-width: 767px) {
+  .overlay {
+    padding:     12px;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-height:    85vh;
+    max-width:     100%;
+    border-radius: 16px 16px 0 0;
+  }
+}

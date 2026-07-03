@@ -1,0 +1,13 @@
+/* src/muse/components/shared/EventBriefStatusTag/EventBriefStatusTag.module.css */
+
+.tag {
+  display:        inline-flex;
+  align-items:    center;
+  flex-shrink:    0;
+  padding:        3px 10px;
+  border-radius:  20px;
+  font-size:      clamp(11px, 0.78vw, 12px);
+  font-weight:    500;
+  white-space:    nowrap;
+  line-height:    1.4;
+}

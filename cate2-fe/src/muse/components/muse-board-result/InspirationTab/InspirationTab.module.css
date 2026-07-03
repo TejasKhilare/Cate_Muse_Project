@@ -1,0 +1,193 @@
+/* src/muse/components/muse-board-result/InspirationTab/InspirationTab.module.css */
+
+.tab {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(20px, 1.8vw, 32px);
+}
+
+/* ── Hero ── */
+.heroWrapper {
+  position:      relative;
+  width:         100%;
+  border-radius: var(--muse-card-radius);
+  overflow:      hidden;
+  aspect-ratio:  16 / 7;
+  background:    #1a1f2e;
+  min-height:    clamp(240px, 28vw, 520px);
+}
+
+.heroImage {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+}
+
+.heroPlaceholder {
+  width:           100%;
+  height:          100%;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  background:      linear-gradient(135deg, #1a1f2e 0%, #2d3448 100%);
+}
+
+.placeholderText {
+  font-size:  clamp(14px, 1vw, 18px);
+  color:      rgba(255, 255, 255, 0.4);
+  text-align: center;
+  padding:    0 24px;
+}
+
+.heroOverlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.20) 50%,
+    transparent          100%
+  );
+  display:     flex;
+  align-items: flex-end;
+  padding:     clamp(16px, 1.4vw, 28px);
+}
+
+.heroTextBlock {
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+}
+
+.heroTitle {
+  font-size:   clamp(18px, 1.8vw, 30px);
+  font-weight: 700;
+  color:       #ffffff;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size:   clamp(12px, 0.9vw, 15px);
+  color:       rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+.regenerateBtn {
+  position:        absolute;
+  top:             clamp(12px, 1vw, 18px);
+  right:           clamp(12px, 1vw, 18px);
+  display:         inline-flex;
+  align-items:     center;
+  gap:             6px;
+  padding:         clamp(7px, 0.6vw, 10px) clamp(12px, 1vw, 16px);
+  background:      rgba(255, 255, 255, 0.92);
+  border:          none;
+  border-radius:   8px;
+  font-size:       clamp(12px, 0.85vw, 14px);
+  font-weight:     500;
+  color:           var(--muse-text-primary);
+  cursor:          pointer;
+  font-family:     inherit;
+  transition:      background 0.15s;
+  backdrop-filter: blur(4px);
+}
+
+.regenerateBtn:hover {
+  background: #ffffff;
+}
+
+/* ── AI Prompt card ── */
+.promptCard {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  padding:        clamp(16px, 1.4vw, 24px);
+  box-shadow:     var(--muse-shadow-card);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(8px, 0.7vw, 12px);
+}
+
+.promptLabel {
+  font-size:      clamp(10px, 0.72vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color:          var(--muse-text-muted);
+}
+
+.promptText {
+  font-size:   clamp(12px, 0.88vw, 14px);
+  color:       var(--muse-text-secondary);
+  line-height: 1.7;
+  margin:      0;
+  font-style:  italic;
+}
+
+/* ── Supporting imagery ── */
+.supportingSection {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(14px, 1.2vw, 20px);
+}
+
+.supportingTitle {
+  font-size:   clamp(16px, 1.2vw, 20px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+  margin:      0;
+}
+
+/* 3-col desktop — dynamic because images come from API */
+.supportingGrid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   clamp(10px, 0.9vw, 16px);
+}
+
+.supportingImageWrapper {
+  border-radius: var(--muse-card-radius);
+  overflow:      hidden;
+  aspect-ratio:  4 / 3;
+  background:    #e8e6e0;
+}
+
+.supportingImage {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+  transition: transform 0.3s ease;
+}
+
+.supportingImageWrapper:hover .supportingImage {
+  transform: scale(1.03);
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+  .heroWrapper {
+    aspect-ratio: 16 / 8;
+  }
+
+  .supportingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .heroWrapper {
+    aspect-ratio: 4 / 3;
+    min-height:   200px;
+  }
+
+  .supportingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .regenerateBtn span {
+    display: none;
+  }
+}

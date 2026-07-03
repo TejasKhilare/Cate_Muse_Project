@@ -1,0 +1,35 @@
+/* src/muse/components/admin/tabs/AdminUsageAnalyticsTab/AdminUsageAnalyticsTab.module.css */
+
+.tab { display: flex; flex-direction: column; gap: clamp(16px, 1.4vw, 24px); min-width: 0; }
+
+.statsGrid {
+  display:               grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap:                   clamp(12px, 1vw, 16px);
+}
+
+/*
+ * Root fix: 1fr alone keeps an implicit min-width: auto on each track,
+ * so a child's intrinsic content width (here, DailyPromptsChart's
+ * 420px-wide bar chart) can stretch the track past the viewport.
+ * minmax(0, 1fr) caps each track's minimum at 0, forcing the child's
+ * own overflow-x:auto to handle the overflow internally instead.
+ */
+.chartsRow {
+  display:               grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap:                   clamp(16px, 1.4vw, 24px);
+  align-items:           start;
+}
+
+.modelSection { display: flex; flex-direction: column; gap: clamp(12px, 1vw, 16px); }
+.sectionTitle { font-size: clamp(16px, 1.2vw, 18px); font-weight: 600; color: var(--muse-text-primary); }
+
+@media (max-width: 1023px) {
+  .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chartsRow { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}

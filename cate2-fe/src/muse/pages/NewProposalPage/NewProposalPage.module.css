@@ -1,0 +1,163 @@
+/* src/muse/pages/NewProposalPage/NewProposalPage.module.css */
+
+.page {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(18px, 1.6vw, 28px);
+  width:          100%;
+}
+
+/* ── Page header ─────────────────────────────────────────────── */
+.pageHeader {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(6px, 0.5vw, 10px);
+}
+
+/* Icon + title on one line */
+.titleRow {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(10px, 0.85vw, 16px);
+}
+
+.pageTitle {
+  font-size:   clamp(24px, 2vw, 34px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-size:   clamp(13px, 0.9vw, 15px);
+  color:       var(--muse-text-secondary);
+  margin:      0;
+  line-height: 1.5;
+}
+
+/* ── Action buttons row ──────────────────────────────────────── */
+.actions {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(10px, 0.85vw, 16px);
+  flex-wrap:   wrap;
+}
+
+/* "✦ Create & Generate" — gold filled */
+.createBtn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           clamp(7px, 0.55vw, 10px);
+  padding:       clamp(11px, 0.9vw, 15px) clamp(20px, 1.7vw, 32px);
+  background:    var(--muse-gold);
+  color:         #1a1f2e;
+  font-size:     clamp(13px, 0.95vw, 16px);
+  font-weight:   600;
+  border:        none;
+  border-radius: 8px;
+  cursor:        pointer;
+  white-space:   nowrap;
+  line-height:   1;
+  transition:    background 0.15s, transform 0.1s, opacity 0.15s;
+  font-family:   inherit;
+}
+
+.createBtn:hover:not(:disabled) {
+  background: var(--muse-gold-dark);
+  transform:  translateY(-1px);
+}
+
+.createBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.createBtn:disabled {
+  opacity: 0.65;
+  cursor:  not-allowed;
+}
+
+/* "Save Draft" — outline */
+.draftBtn {
+  display:       inline-flex;
+  align-items:   center;
+  padding:       clamp(11px, 0.9vw, 15px) clamp(20px, 1.7vw, 32px);
+  background:    var(--muse-card-bg);
+  color:         var(--muse-text-primary);
+  font-size:     clamp(13px, 0.95vw, 16px);
+  font-weight:   500;
+  border:        1px solid var(--muse-card-border);
+  border-radius: 8px;
+  cursor:        pointer;
+  white-space:   nowrap;
+  line-height:   1;
+  transition:    border-color 0.15s, background 0.15s, transform 0.1s, opacity 0.15s;
+  font-family:   inherit;
+}
+
+.draftBtn:hover:not(:disabled) {
+  border-color: var(--muse-gold);
+  background:   #f9f8f5;
+  transform:    translateY(-1px);
+}
+
+.draftBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.draftBtn:disabled {
+  opacity: 0.65;
+  cursor:  not-allowed;
+}
+
+/* ── "How it works" info section ─────────────────────────────── */
+.howItWorks {
+  background:    rgba(201, 168, 76, 0.06);
+  border:        1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 8px;
+  padding:       clamp(14px, 1.2vw, 22px) clamp(16px, 1.4vw, 26px);
+  font-size:     clamp(12px, 0.88vw, 14px);
+  color:         var(--muse-text-secondary);
+  line-height:   1.65;
+}
+
+.howItWorks strong {
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+}
+
+/* ── Tablet (768–1023px) ──────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .page {
+    gap: 20px;
+  }
+
+  .pageTitle {
+    font-size: 22px;
+  }
+}
+
+/* ── Mobile (<768px) ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .page {
+    gap: 16px;
+  }
+
+  .pageTitle {
+    font-size: 20px;
+  }
+
+  /* Stack buttons full-width on mobile */
+  .actions {
+    flex-direction: column;
+    align-items:    stretch;
+  }
+
+  .createBtn,
+  .draftBtn {
+    justify-content: center;
+    width:           100%;
+    padding:         13px 20px;
+    font-size:       15px;
+  }
+}

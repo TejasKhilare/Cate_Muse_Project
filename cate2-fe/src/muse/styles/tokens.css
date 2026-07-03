@@ -1,0 +1,52 @@
+/* src/muse/styles/tokens.css */
+
+:root {
+  /* Sidebar */
+  --muse-sidebar-bg:          #1a1f2e;
+  --muse-sidebar-width:       240px;
+  --muse-sidebar-item-color:  #8892a4;
+  --muse-sidebar-item-hover:  #c9a84c;
+  --muse-sidebar-item-active: #c9a84c;
+  --muse-sidebar-active-bg:   rgba(201, 168, 76, 0.12);
+  --muse-sidebar-border:      rgba(255, 255, 255, 0.06);
+  --muse-sidebar-logo-color:  #ffffff;
+
+  /* Gold accent */
+  --muse-gold:       #c9a84c;
+  --muse-gold-dark:  #a88735;
+  --muse-gold-light: #e8d49a;
+  --muse-gold-bg:    rgba(201, 168, 76, 0.10);
+
+  /* Content */
+  --muse-content-bg:  #f5f4f0;
+  --muse-card-bg:     #ffffff;
+  --muse-card-border: #e8e6e0;
+  --muse-card-radius: 12px;
+
+  /* Typography */
+  --muse-text-primary:   #1a1f2e;
+  --muse-text-secondary: #6b7280;
+  --muse-text-muted:     #9ca3af;
+
+  /* Header */
+  --muse-header-bg:     #ffffff;
+  --muse-header-height: 64px;
+  --muse-header-border: #e8e6e0;
+
+  /* Status */
+  --muse-status-draft-text:     #64748b;
+  --muse-status-draft-bg:       #f8fafc;
+  --muse-status-in-review-text: #d97706;
+  --muse-status-in-review-bg:   #fffbeb;
+  --muse-status-sent-text:      #4f46e5;
+  --muse-status-sent-bg:        #eef2ff;
+  --muse-status-won-text:       #16a34a;
+  --muse-status-won-bg:         #f0fdf4;
+
+  /* Shadows */
+  --muse-shadow-card:  0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --muse-shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* Spacing */
+  --muse-content-padding: 32px;
+}

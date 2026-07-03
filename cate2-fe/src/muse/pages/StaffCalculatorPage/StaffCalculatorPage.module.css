@@ -1,0 +1,472 @@
+/* src/muse/pages/StaffCalculatorPage/StaffCalculatorPage.module.css */
+
+.page {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(18px, 1.6vw, 28px);
+  width:          100%;
+}
+
+/* ── Page header ─────────────────────────────────────────────── */
+.pageHeader {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+  gap:             16px;
+  flex-wrap:       wrap;
+}
+
+.pageHeaderLeft {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(5px, 0.4vw, 8px);
+}
+
+.titleRow {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(10px, 0.85vw, 14px);
+}
+
+.pageTitle {
+  font-size:   clamp(22px, 1.9vw, 32px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-size:   clamp(12px, 0.88vw, 14px);
+  color:       var(--muse-text-secondary);
+  margin:      0;
+  line-height: 1.5;
+}
+
+/* ── Mode selector (top-right) ───────────────────────────────── */
+.modeWrapper {
+  flex-shrink: 0;
+}
+
+/* ── Event Brief Banner ──────────────────────────────────────── */
+.briefBanner {
+  display:       flex;
+  align-items:   center;
+  gap:           clamp(10px, 0.9vw, 16px);
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  padding:       clamp(14px, 1.2vw, 20px) clamp(16px, 1.4vw, 24px);
+  box-shadow:    var(--muse-shadow-card);
+}
+
+.briefInfo {
+  flex:           1;
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+  min-width:      0;
+}
+
+.briefName {
+  font-size:   clamp(14px, 1vw, 16px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+}
+
+.briefMeta {
+  font-size: clamp(12px, 0.85vw, 13px);
+  color:     var(--muse-text-secondary);
+}
+
+.changeEventBtn {
+  background:      transparent;
+  border:          none;
+  font-size:       clamp(12px, 0.88vw, 14px);
+  font-weight:     500;
+  color:           var(--muse-gold);
+  cursor:          pointer;
+  padding:         0;
+  white-space:     nowrap;
+  font-family:     inherit;
+  transition:      color 0.15s;
+  flex-shrink:     0;
+}
+
+.changeEventBtn:hover { color: var(--muse-gold-dark); }
+
+/* ── Main 2-column layout ────────────────────────────────────── */
+.layout {
+  display:               grid;
+  grid-template-columns: clamp(280px, 32vw, 480px) 1fr;
+  gap:                   clamp(16px, 1.4vw, 24px);
+  align-items:           start;
+}
+
+.formCol {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 16px);
+  min-width:      0;
+}
+
+.resultsCol {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 16px);
+  min-width:      0;
+}
+
+/* ── Form section cards ──────────────────────────────────────── */
+.section {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  padding:        clamp(16px, 1.4vw, 24px);
+  box-shadow:     var(--muse-shadow-card);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 16px);
+}
+
+.sectionLabel {
+  font-size:      clamp(10px, 0.72vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--muse-text-muted);
+}
+
+/* ── Field group ─────────────────────────────────────────────── */
+.fieldGroup {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(5px, 0.4vw, 7px);
+}
+
+.fieldLabel {
+  font-size:   clamp(12px, 0.85vw, 13px);
+  color:       var(--muse-text-secondary);
+  font-weight: 400;
+}
+
+/* ── Text input ──────────────────────────────────────────────── */
+.input {
+  width:         100%;
+  height:        clamp(38px, 2.9vw, 48px);
+  padding:       0 clamp(10px, 0.85vw, 14px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:hover  { border-color: var(--muse-gold); }
+.input:focus  { border-color: var(--muse-gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+
+/* ── Number input — keep spinners ────────────────────────────── */
+.inputNumber {
+  width:              100%;
+  height:             clamp(38px, 2.9vw, 48px);
+  padding:            0 clamp(6px, 0.5vw, 10px) 0 clamp(10px, 0.85vw, 14px);
+  background:         #f9f8f5;
+  border:             1px solid #e8e6e0;
+  border-radius:      8px;
+  font-size:          clamp(13px, 0.95vw, 15px);
+  color:              var(--muse-text-primary);
+  font-family:        inherit;
+  outline:            none;
+  transition:         border-color 0.15s, box-shadow 0.15s;
+  appearance:         auto;
+  -webkit-appearance: auto;
+}
+
+.inputNumber::-webkit-inner-spin-button,
+.inputNumber::-webkit-outer-spin-button { opacity: 1; height: 100%; }
+.inputNumber:hover { border-color: var(--muse-gold); }
+.inputNumber:focus { border-color: var(--muse-gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+
+/* ── Native select — single border ──────────────────────────── */
+.selectWrapper {
+  position: relative;
+  width:    100%;
+}
+
+.select, .modeSelect {
+  appearance:         none;
+  -webkit-appearance: none;
+  width:         100%;
+  height:        clamp(38px, 2.9vw, 48px);
+  padding:       0 clamp(32px, 2.2vw, 44px) 0 clamp(10px, 0.85vw, 14px);
+  background:    #f9f8f5;
+  border:        1px solid #e8e6e0;
+  border-radius: 8px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  color:         var(--muse-text-primary);
+  font-family:   inherit;
+  outline:       none;
+  cursor:        pointer;
+  transition:    border-color 0.15s, box-shadow 0.15s;
+}
+
+.select:hover, .modeSelect:hover  { border-color: var(--muse-gold); }
+.select:focus, .modeSelect:focus  { border-color: var(--muse-gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+
+.selectChevron {
+  position:       absolute;
+  right:          clamp(10px, 0.85vw, 14px);
+  top:            50%;
+  transform:      translateY(-50%);
+  color:          #9ca3af;
+  font-size:      clamp(10px, 0.72vw, 12px);
+  pointer-events: none;
+  user-select:    none;
+  line-height:    1;
+}
+
+/* ── Toggle row ──────────────────────────────────────────────── */
+.toggleRow {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             12px;
+}
+
+.toggleLabel {
+  font-size:   clamp(12px, 0.88vw, 14px);
+  color:       var(--muse-text-secondary);
+  line-height: 1;
+}
+
+/* ── Bottom actions ──────────────────────────────────────────── */
+.actions {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(10px, 0.85vw, 14px);
+  flex-wrap:   wrap;
+}
+
+.saveBtn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           7px;
+  padding:       clamp(10px, 0.85vw, 13px) clamp(16px, 1.3vw, 24px);
+  background:    var(--muse-gold);
+  color:         #1a1f2e;
+  font-size:     clamp(13px, 0.9vw, 14px);
+  font-weight:   600;
+  border:        none;
+  border-radius: 8px;
+  cursor:        pointer;
+  font-family:   inherit;
+  transition:    background 0.15s, transform 0.1s;
+  white-space:   nowrap;
+}
+
+.saveBtn:hover { background: var(--muse-gold-dark); transform: translateY(-1px); }
+
+.exportBtn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           7px;
+  padding:       clamp(10px, 0.85vw, 13px) clamp(16px, 1.3vw, 24px);
+  background:    var(--muse-card-bg);
+  color:         var(--muse-text-primary);
+  font-size:     clamp(13px, 0.9vw, 14px);
+  font-weight:   500;
+  border:        1px solid var(--muse-card-border);
+  border-radius: 8px;
+  cursor:        pointer;
+  font-family:   inherit;
+  transition:    border-color 0.15s, transform 0.1s;
+  white-space:   nowrap;
+}
+
+.exportBtn:hover { border-color: var(--muse-gold); transform: translateY(-1px); }
+
+.attribution {
+  font-size:   clamp(11px, 0.75vw, 12px);
+  color:       var(--muse-text-muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ── Event Brief Modal ───────────────────────────────────────── */
+.modalOverlay {
+  position:         fixed;
+  inset:            0;
+  background:       rgba(0, 0, 0, 0.45);
+  z-index:          200;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  padding:          20px;
+}
+
+.modal {
+  background:    #ffffff;
+  border-radius: 14px;
+  width:         100%;
+  max-width:     540px;
+  max-height:    80vh;
+  display:       flex;
+  flex-direction: column;
+  overflow:      hidden;
+  box-shadow:    0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.modalHeader {
+  padding:       clamp(20px, 1.8vw, 28px) clamp(20px, 1.8vw, 28px) 0;
+  flex-shrink:   0;
+}
+
+.modalTitle {
+  font-size:   clamp(18px, 1.4vw, 22px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  margin:      0 0 4px;
+}
+
+.modalSubtitle {
+  font-size: clamp(12px, 0.88vw, 14px);
+  color:     var(--muse-text-secondary);
+  margin:    0;
+}
+
+.briefList {
+  flex:         1;
+  overflow-y:   auto;
+  padding:      clamp(14px, 1.2vw, 20px) clamp(20px, 1.8vw, 28px);
+  display:      flex;
+  flex-direction: column;
+  gap:          10px;
+}
+
+.briefItem {
+  width:         100%;
+  text-align:    left;
+  background:    #ffffff;
+  border:        1px solid var(--muse-card-border);
+  border-radius: 10px;
+  padding:       clamp(14px, 1.2vw, 18px) clamp(16px, 1.4vw, 20px);
+  cursor:        pointer;
+  font-family:   inherit;
+  transition:    border-color 0.15s, background 0.15s;
+}
+
+.briefItem:hover {
+  border-color: var(--muse-gold);
+  background:   #faf9f6;
+}
+
+.briefItemTop {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-bottom:   5px;
+  gap:             10px;
+}
+
+.briefItemName {
+  font-size:   clamp(14px, 1vw, 15px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+}
+
+.briefStatusBadge {
+  font-size:     11px;
+  font-weight:   500;
+  padding:       3px 10px;
+  border-radius: 20px;
+  white-space:   nowrap;
+  flex-shrink:   0;
+}
+
+.briefItemMeta,
+.briefItemDate {
+  font-size:  clamp(11px, 0.78vw, 13px);
+  color:      var(--muse-text-secondary);
+  margin:     0;
+  line-height: 1.5;
+}
+
+.modalFooter {
+  padding:     clamp(14px, 1.2vw, 20px) clamp(20px, 1.8vw, 28px);
+  border-top:  1px solid var(--muse-card-border);
+  flex-shrink: 0;
+}
+
+.cancelBtn {
+  background:  transparent;
+  border:      none;
+  font-size:   clamp(13px, 0.9vw, 15px);
+  font-weight: 500;
+  color:       var(--muse-text-secondary);
+  cursor:      pointer;
+  padding:     0;
+  font-family: inherit;
+  transition:  color 0.15s;
+}
+
+.cancelBtn:hover { color: var(--muse-text-primary); }
+
+/* ── Tablet (768–1023px): stack form above results ───────────── */
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tablet order: event banner → event info → bar setup →
+     service & complexity → summary bar → staffing list */
+  .resultsCol {
+    order: 2;
+  }
+
+  .formCol {
+    order: 1;
+  }
+
+  .attribution {
+    margin-left: 0;
+    width:       100%;
+  }
+}
+
+/* ── Mobile (<768px) ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .page { gap: 16px; }
+
+  .pageTitle { font-size: 20px; }
+
+  .pageHeader {
+    flex-direction: column;
+    align-items:    stretch;
+  }
+
+  .input,
+  .inputNumber,
+  .select,
+  .modeSelect {
+    font-size: 16px; /* prevent iOS zoom */
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items:    stretch;
+  }
+
+  .saveBtn,
+  .exportBtn {
+    justify-content: center;
+    width:           100%;
+  }
+
+  .attribution {
+    text-align: center;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,142 @@
+/* src/muse/components/staff-calculator/StaffRoleTable/StaffRoleTable.module.css */
+
+.wrapper {
+  background:    var(--muse-card-bg);
+  border:        1px solid var(--muse-card-border);
+  border-radius: var(--muse-card-radius);
+  box-shadow:    var(--muse-shadow-card);
+  overflow:      hidden;
+  /* Fix 1 — fixed height so wrapper never grows beyond this */
+  max-height:    clamp(420px, 90vh, 1000px);
+  display:       flex;
+  flex-direction: column;
+}
+
+.header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         clamp(14px, 1.2vw, 20px) clamp(16px, 1.4vw, 24px);
+  border-bottom:   1px solid var(--muse-card-border);
+  flex-shrink:     0;  /* header never shrinks */
+}
+
+.headerLeft {
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+}
+
+.title {
+  font-size:   clamp(14px, 1vw, 16px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+}
+
+.activeRoles {
+  font-size:   clamp(12px, 0.85vw, 13px);
+  color:       var(--muse-text-muted);
+  white-space: nowrap;
+}
+
+/* Fix 2 — scrollWrapper handles BOTH axes with visible scrollbars */
+.scrollWrapper {
+  overflow-x:                 auto;
+  overflow-y:                 auto;   /* vertical scroll here, not on wrapper */
+  -webkit-overflow-scrolling: touch;
+  flex:                       1;      /* takes remaining height after header */
+  min-height:                 0;      /* required for flex child to scroll */
+
+  /* Fix 3 — visible scrollbar on all devices including laptop */
+  scrollbar-width:            auto;   /* NOT thin/none — full size scrollbar */
+  scrollbar-color:            #c9a84c #f5f4f0;  /* gold thumb, warm bg */
+}
+
+/* Webkit (Chrome, Safari, Edge) — styled visible scrollbars */
+.scrollWrapper::-webkit-scrollbar {
+  width:  8px;   /* vertical scrollbar width */
+  height: 8px;   /* horizontal scrollbar height */
+}
+
+.scrollWrapper::-webkit-scrollbar-track {
+  background:    #f5f4f0;
+  border-radius: 4px;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background:    #c9a84c;  /* gold — matches MUSE brand */
+  border-radius: 4px;
+  border:        2px solid #f5f4f0;  /* gap between thumb and track */
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb:hover {
+  background: #a88735;
+}
+
+/* Corner where both scrollbars meet */
+.scrollWrapper::-webkit-scrollbar-corner {
+  background: #f5f4f0;
+}
+
+.table {
+  width:           100%;
+  border-collapse: collapse;
+  min-width:       700px;
+}
+
+.th {
+  padding:        clamp(10px, 0.85vw, 14px) clamp(12px, 1vw, 18px);
+  font-size:      clamp(10px, 0.72vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color:          var(--muse-text-secondary);
+  background:     #f9f8f5;
+  border-bottom:  1px solid var(--muse-card-border);
+  white-space:    nowrap;
+  /* Fix 4 — sticky header stays visible during vertical scroll */
+  position:       sticky;
+  top:            0;
+  z-index:        1;
+}
+
+.roleCol { text-align: left; min-width: 220px; }
+.numCol  { text-align: right; }
+
+.row { transition: background 0.12s; }
+.row:hover { background: #faf9f6; }
+.row:not(:last-child) td { border-bottom: 1px solid var(--muse-card-border); }
+
+.td {
+  padding:        clamp(10px, 0.9vw, 16px) clamp(12px, 1vw, 18px);
+  vertical-align: top;
+}
+
+.num { text-align: right; }
+
+.roleName {
+  display:     block;
+  font-size:   clamp(13px, 0.9vw, 14px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+  white-space: nowrap;
+}
+
+.roleRationale {
+  display:    block;
+  font-size:  clamp(11px, 0.75vw, 12px);
+  color:      var(--muse-text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.td.num {
+  font-size:   clamp(13px, 0.9vw, 14px);
+  color:       var(--muse-text-primary);
+  white-space: nowrap;
+}
+
+.margin {
+  font-weight: 600;
+  color:       #0d9488 !important;
+}

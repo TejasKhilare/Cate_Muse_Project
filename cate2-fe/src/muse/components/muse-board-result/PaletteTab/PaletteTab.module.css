@@ -1,0 +1,123 @@
+/* src/muse/components/muse-board-result/PaletteTab/PaletteTab.module.css */
+
+.tab {
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(16px, 1.4vw, 24px);
+}
+
+.section {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  padding:        clamp(20px, 1.8vw, 32px);
+  box-shadow:     var(--muse-shadow-card);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(16px, 1.4vw, 24px);
+}
+
+.sectionTitle {
+  font-size:   clamp(15px, 1.1vw, 18px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+  margin:      0;
+}
+
+/* ── Swatches — match form style, larger ── */
+.paletteRow {
+  display:   flex;
+  gap:       clamp(16px, 1.4vw, 28px);
+  flex-wrap: wrap;
+}
+
+.paletteItem {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            8px;
+}
+
+.paletteSwatch {
+  width:         clamp(70px, 6vw, 100px);
+  height:        clamp(70px, 6vw, 100px);
+  border-radius: 10px;
+  border:        2px solid rgba(0, 0, 0, 0.08);
+  box-shadow:    0 2px 8px rgba(0, 0, 0, 0.10);
+  transition:    transform 0.2s;
+}
+
+.paletteItem:hover .paletteSwatch {
+  transform: scale(1.06);
+}
+
+.paletteHex {
+  font-size:      clamp(11px, 0.8vw, 13px);
+  font-weight:    600;
+  color:          var(--muse-text-secondary);
+  font-family:    monospace;
+  letter-spacing: 0.03em;
+}
+
+.paletteName {
+  font-size:  clamp(11px, 0.78vw, 12px);
+  color:      var(--muse-text-muted);
+  text-align: center;
+}
+
+/* ── Color pills ── */
+.colorPills {
+  display:   flex;
+  flex-wrap: wrap;
+  gap:       clamp(7px, 0.6vw, 10px);
+}
+
+.colorPill {
+  display:       inline-flex;
+  align-items:   center;
+  padding:       clamp(5px, 0.45vw, 8px) clamp(12px, 1vw, 18px);
+  border:        1px solid var(--muse-card-border);
+  border-radius: 999px;
+  font-size:     clamp(12px, 0.88vw, 14px);
+  color:         var(--muse-text-primary);
+  background:    var(--muse-card-bg);
+  white-space:   nowrap;
+  transition:    border-color 0.15s;
+}
+
+.colorPill:hover {
+  border-color: var(--muse-gold);
+}
+
+/* ── Palette in Context ── */
+.contextBar {
+  display:       flex;
+  height:        clamp(48px, 4.5vw, 70px);
+  border-radius: 8px;
+  overflow:      hidden;
+}
+
+.contextSegment {
+  transition: flex 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:     pointer;
+  flex:       1;
+}
+
+.contextHint {
+  font-size:   clamp(11px, 0.8vw, 13px);
+  color:       var(--muse-gold-dark);
+  margin:      0;
+  line-height: 1.5;
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .paletteSwatch {
+    width:  64px;
+    height: 64px;
+  }
+
+  .paletteRow {
+    gap: 14px;
+  }
+}

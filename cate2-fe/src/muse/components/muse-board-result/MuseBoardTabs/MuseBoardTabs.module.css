@@ -1,0 +1,58 @@
+/* src/muse/components/muse-board-result/MuseBoardTabs/MuseBoardTabs.module.css */
+
+.wrapper {
+  border-bottom: 1px solid var(--muse-card-border);
+}
+
+.tabsScroll {
+  display:            flex;
+  gap:                clamp(20px, 1.8vw, 32px);
+  overflow-x:         auto;
+  scrollbar-width:    none;
+  -ms-overflow-style: none;
+}
+
+.tabsScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           6px;
+  background:    transparent;
+  border:        none;
+  border-bottom: 2px solid transparent;
+  padding:       clamp(10px, 0.9vw, 14px) 2px;
+  font-size:     clamp(13px, 0.95vw, 15px);
+  font-weight:   500;
+  color:         var(--muse-text-secondary);
+  cursor:        pointer;
+  white-space:   nowrap;
+  font-family:   inherit;
+  flex-shrink:   0;
+  transition:    color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  color: var(--muse-text-primary);
+}
+
+.active {
+  color:               var(--muse-text-primary);
+  font-weight:         600;
+  border-bottom-color: var(--muse-gold);
+}
+
+.badge {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  background:      var(--muse-gold-bg);
+  color:           var(--muse-gold-dark);
+  font-size:       11px;
+  font-weight:     600;
+  padding:         1px 7px;
+  border-radius:   10px;
+  min-width:       22px;
+}

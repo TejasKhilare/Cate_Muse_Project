@@ -1,0 +1,146 @@
+/* src/muse/components/equipment-calculator/EquipmentSummaryBar/EquipmentSummaryBar.module.css */
+
+.wrapper {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  padding:        clamp(16px, 1.4vw, 24px) clamp(20px, 1.8vw, 28px);
+  box-shadow:     var(--muse-shadow-card);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(12px, 1vw, 16px);
+}
+
+/* ── Top row: 4 main metrics ─────────────────────────────────── */
+.topRow {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             clamp(10px, 0.9vw, 16px);
+  flex-wrap:       wrap;
+}
+
+.metric {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            clamp(6px, 0.5vw, 10px);
+  flex:           1;
+  min-width:      80px;
+}
+
+.label {
+  font-size:      clamp(9px, 0.68vw, 11px);
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--muse-text-secondary);
+  white-space:    nowrap;
+  text-align:     center;
+}
+
+.value {
+  font-size:   clamp(18px, 1.6vw, 26px);
+  font-weight: 700;
+  color:       var(--muse-text-primary);
+  font-family: var(--font-family-title);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.grandTotal {
+  color: var(--muse-gold);
+}
+
+.divider {
+  width:       1px;
+  height:      clamp(36px, 3vw, 48px);
+  background:  var(--muse-card-border);
+  flex-shrink: 0;
+}
+
+/* ── Bottom row: secondary breakdown ─────────────────────────── */
+.bottomRow {
+  display:     flex;
+  align-items: center;
+  gap:         clamp(16px, 1.5vw, 28px);
+  padding-top: clamp(10px, 0.85vw, 14px);
+  border-top:  1px solid var(--muse-card-border);
+  flex-wrap:   wrap;
+}
+
+.secondary {
+  display:        flex;
+  flex-direction: column;
+  gap:            3px;
+}
+
+.secLabel {
+  font-size:   clamp(11px, 0.78vw, 13px);
+  color:       var(--muse-text-muted);
+  white-space: nowrap;
+}
+
+.secValue {
+  font-size:   clamp(13px, 0.95vw, 15px);
+  font-weight: 600;
+  color:       var(--muse-text-primary);
+  white-space: nowrap;
+}
+
+/* ── Mobile (≤767px): switch both rows to a predictable 2-col grid ── */
+/*
+ * Root cause of the overlap bug: .label / .secLabel have white-space: nowrap.
+ * Flex items have an implicit min-width: auto, which means flex-shrink is
+ * ignored once the *content's* intrinsic width (forced wide by nowrap) is
+ * reached — explicit min-width: 80px never actually capped anything.
+ * At ~360px viewport, "EQUIPMENT SUBTOTAL" couldn't shrink and bled into
+ * the next metric.
+ *
+ * Fix: drop flex-wrap entirely on mobile in favor of CSS Grid. Grid columns
+ * have a real, predictable width — text wraps inside its own cell instead
+ * of overflowing into a sibling.
+ */
+@media (max-width: 767px) {
+  .topRow {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   16px 12px;
+  }
+
+  /* Dividers are decorative only on desktop's single-row layout */
+  .divider {
+    display: none;
+  }
+
+  .metric {
+    align-items: flex-start;   /* left-align inside each grid cell */
+    min-width:   0;            /* allow the grid track to control width, not content */
+  }
+
+  .label {
+    white-space: normal;       /* allow wrap as a safety net at extreme widths */
+    text-align:  left;
+  }
+
+  .value {
+    white-space: normal;
+    text-align:  left;
+  }
+
+  .bottomRow {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   14px 12px;
+    padding-top:           12px;
+  }
+
+  .secondary {
+    min-width: 0;
+  }
+
+  .secLabel,
+  .secValue {
+    white-space: normal;
+  }
+}

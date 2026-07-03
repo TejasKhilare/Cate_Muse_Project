@@ -1,0 +1,55 @@
+/* src/muse/components/admin/DailyPromptsChart/DailyPromptsChart.module.css */
+
+.card {
+  background:     var(--muse-card-bg);
+  border:         1px solid var(--muse-card-border);
+  border-radius:  var(--muse-card-radius);
+  box-shadow:     var(--muse-shadow-card);
+  padding:        clamp(16px, 1.4vw, 24px);
+  display:        flex;
+  flex-direction: column;
+  gap:            clamp(16px, 1.4vw, 24px);
+  /*
+   * Belt-and-suspenders: even with overflow-x:auto on .scrollWrapper below,
+   * .card itself is a GRID ITEM in AdminUsageAnalyticsTab's .chartsRow.
+   * Grid items have an implicit min-width: auto floor based on content —
+   * explicitly zeroing it here guarantees this card never forces its
+   * parent grid track wider than available space, regardless of which
+   * grid-template-columns value the parent uses.
+   */
+  min-width:      0;
+}
+
+.header { display: flex; align-items: center; }
+.title  { font-size: clamp(14px, 1vw, 16px); font-weight: 600; color: var(--muse-text-primary); }
+
+.scrollWrapper {
+  overflow-x:      auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c9a84c #f5f4f0;
+}
+.scrollWrapper::-webkit-scrollbar       { height: 6px; }
+.scrollWrapper::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
+
+.chart {
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: space-between;
+  gap:             clamp(8px, 1vw, 16px);
+  min-width:       420px;
+  height:          clamp(160px, 16vw, 220px);
+}
+
+.barCol {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            8px;
+  flex:           1;
+  height:         100%;
+}
+
+.barValue { font-size: clamp(11px, 0.8vw, 13px); color: var(--muse-text-secondary); font-weight: 600; }
+.barTrack { flex: 1; width: clamp(20px, 2.2vw, 32px); display: flex; align-items: flex-end; }
+.bar      { width: 100%; background: var(--muse-gold); border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.3s ease; }
+.barLabel { font-size: clamp(11px, 0.78vw, 12px); color: var(--muse-text-muted); }
