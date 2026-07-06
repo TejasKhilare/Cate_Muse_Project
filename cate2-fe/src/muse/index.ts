@@ -1,1 +1,0 @@
-export { museRoutes } from './routes/MuseRoutes';

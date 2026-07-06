@@ -22,6 +22,7 @@ const cognitoAuthConfig = {
   redirect_uri: config.authRedirectUrl,
   response_type: 'code',
   scope: 'openid',
+  automaticSilentRenew: true,
 };
 
 export const Providers = ({ children }: QueryClientProviderProp) => {
