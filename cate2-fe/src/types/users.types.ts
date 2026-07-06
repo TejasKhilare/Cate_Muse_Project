@@ -1,5 +1,4 @@
-import { OrderType } from '@/types/common.types.ts';
-
+import type { OrderType } from '@/types/common.types.ts';
 export type UserRoles =
   | 'event_producer'
   | 'event_designer'

@@ -10,7 +10,7 @@ from src.auth.services.openid import OpenIdConfigurationService
 from src.core.config import AppConfig
 from src.health.endpoints import router as health_router
 from src.users.endpoints import router as users_router
-
+from fastapi.middleware.cors import CORSMiddleware
 app_config = AppConfig()
 
 
@@ -36,8 +36,15 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
     await http_client.aclose()
 
-
 app = FastAPI(title=app_config.title, version=app_config.version, debug=app_config.debug, lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(health_router)
 app.include_router(users_router)

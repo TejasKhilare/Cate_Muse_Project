@@ -1,6 +1,12 @@
-import axios, { AxiosResponse, AxiosError } from 'axios';
+import axios from 'axios';
+import type { AxiosResponse, AxiosError } from 'axios';
 import { config } from '@/constants/config';
 import { serializeQueryParams } from '@/api/serializeQueryParams.ts';
+
+let navigateHandler: ((path: string) => void) | null = null;
+export const setApiNavigateHandler = (fn: (path: string) => void) => {
+  navigateHandler = fn;
+};
 
 const createApiClient = (baseApiUrl: string) => {
   if (!baseApiUrl) throw new Error('baseApiUrl must be a valid URL');
@@ -21,7 +27,11 @@ const createApiClient = (baseApiUrl: string) => {
       const status = err.response ? err.response.status : null;
 
       if (status === 403) {
-        window.location.assign('not-authorized');
+        if (navigateHandler) {
+          navigateHandler('/not-authorized');
+        } else {
+          window.location.assign('/not-authorized');
+        }
       }
 
       return Promise.reject(err);

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { User } from '@/types/users.types.ts';
+import type { User } from '@/types/users.types.ts';
+
 
 interface UserStore {
   userData: User | null;

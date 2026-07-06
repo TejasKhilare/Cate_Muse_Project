@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   QueryClient,
   QueryClientProvider as QueryClientProviderReactQuery,
@@ -8,6 +8,7 @@ import { ConfigProvider } from 'antd';
 import { useNavigate, useLocation } from 'react-router';
 import { config } from './constants/config';
 import { antdTheme } from './theme';
+import { setApiNavigateHandler } from '@/api/config';
 
 interface QueryClientProviderProp {
   children: React.ReactNode;
@@ -26,6 +27,11 @@ const cognitoAuthConfig = {
 export const Providers = ({ children }: QueryClientProviderProp) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    setApiNavigateHandler(navigate);
+  }, [navigate]);
+
   return (
     <AuthProvider
       {...cognitoAuthConfig}
