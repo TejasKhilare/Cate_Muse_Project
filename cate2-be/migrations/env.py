@@ -7,7 +7,10 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from src.db.config import DBConfig
 from src.db.models import Base
 
-# import all model modules here so Base.metadata is populated
+from src.users.models import User  # noqa: F401
+from src.clients.models import Client  # noqa: F401
+from src.proposals.models import Proposal  # noqa: F401
+
 from src.users.models import User 
 
 config = context.config

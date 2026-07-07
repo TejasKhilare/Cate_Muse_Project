@@ -4,7 +4,8 @@ from contextlib import asynccontextmanager
 import structlog
 from fastapi import FastAPI
 from httpx import AsyncClient
-
+from src.clients.endpoints import router as clients_router
+from src.proposals.endpoints import router as proposals_router
 from src.auth.dependencies.services import get_jwt_config
 from src.auth.services.openid import OpenIdConfigurationService
 from src.core.config import AppConfig
@@ -48,3 +49,6 @@ app.add_middleware(
 
 app.include_router(health_router)
 app.include_router(users_router)
+
+app.include_router(clients_router)
+app.include_router(proposals_router)
